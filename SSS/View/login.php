@@ -1,4 +1,9 @@
 <?php
+session_start(); 
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    header("location: Dashboard.php");
+    exit;
+}
 spl_autoload_register(function($className) {
     require_once "../Model/".$className.".php";
 });
@@ -11,9 +16,9 @@ $result =$obj->login_username($username,$password);
 $result=implode(" ",$result);
 ?>
 <!DOCTYPE html>
+<meta charset="UTF-8">
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSS</title>
@@ -65,7 +70,7 @@ $result=implode(" ",$result);
                 <input  type="submit" class="btn btn-success" name="submit" value="Login">
             </div>
             <p>Don't have an account? <a href="Registration.php">Sign up now</a>.</p>
-            <p>Forget Password <a href="Registration.php">Sign up now</a>.</p>
+            <p>Forget Password <a href="Registration.php">Click Here</a>.</p>
         </form>
         </div>
     </div>

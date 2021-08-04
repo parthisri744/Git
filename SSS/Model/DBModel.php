@@ -9,7 +9,7 @@ class DBModel {
     private $db;
     private $dsn = 'mysql:dbname=SSS;host=localhost';
     private $user = 'root';
-    private $password = 'rootvm@kms';
+    private $password = '';
     public function __construct() {
     try {
         $this->db = new PDO($this->dsn, $this->user, $this->password);
@@ -43,8 +43,8 @@ class DBModel {
                     $_SESSION["loggedin"] = true;
                     $_SESSION["id"] = $id;
                     $_SESSION["username"] = $username;                            
-                    header("location: Dashbord.php");
-                   //echo "Username And Password Matches";
+                    header("location: Dashboard.php");
+                  // echo "Username And Password Matches SESSION VARIABLE :".$_SESSION['username'];
                 }else{
                     $err_msg[]="The password you entered was not valid";
                 }
@@ -78,7 +78,7 @@ class DBModel {
                     $stmt = $this->db->prepare($sql);
                     $stmt->bindParam(":username", $username, PDO::PARAM_STR);
                     $stmt->bindParam(":password", $param_password, PDO::PARAM_STR);
-                    $param_password = md5($password, PASSWORD_DEFAULT);                 
+                    $param_password = password_hash($password, PASSWORD_DEFAULT);                 
                     if($stmt->execute()){
                     header("location: login.php");
                     }
@@ -86,6 +86,13 @@ class DBModel {
              }
         }
         return $err_msg;
+   }
+   public function session_logout(){
+    session_start();
+    $_SESSION = array();
+    session_destroy();
+    header("location: login.php");
+    exit;
    }
 }
 ?>

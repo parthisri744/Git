@@ -5,12 +5,15 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link>  
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script> 
-<nav class="navbar navbar-expand-md bg-primary navbar-dark fixed-top">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700|Roboto:400,900" rel="stylesheet">
+
+<nav class="navbar navbar-expand-md bg-primary navbar-dark fixed-top "> 
   <a class="navbar-brand" href="#"><small>STUDENT STATIONERY SHOP</small></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+  <div class="collapse navbar-collapse navbar-brand" id="collapsibleNavbar">
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" href="#">Home</a>
@@ -38,11 +41,11 @@
        <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Username </a>
+          <?php echo $_SESSION['username']  ?> </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Action</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Log Out</a>
+          <a class="dropdown-item" href="logout.php "">Log Out</a>
         </div>
       </li>
       <li class="nav-item">
@@ -51,5 +54,6 @@
     </ul>
   </div>  
 </nav>
-<br><br><br/>
+<br><br><br/><br>
+<!-- <br><br/>  -->
 
